@@ -1,0 +1,13 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && \
+    apt install gcc g++ make autoconf git \
+    build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libsodium-dev libgmp-dev \
+    libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev \
+    libzmq3-dev libminiupnpc-dev \
+    # 即使configure时关闭wallet，编译时仍需要libdb依赖，但不要求版本
+    # 若启用wallet，则需要对照文档编译安装4.8版本
+    # 文档地址: https://github.com/blockchaingate/fabcoin/blob/master/doc/build-unix.md
+    libdb5.3-dev libdb5.3++-dev -y
