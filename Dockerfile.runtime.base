@@ -4,4 +4,3 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
     apt install libboost-all-dev libzmq5 libgmpxx4ldbl libminiupnpc17 -y
-/workspaces/fabcoin/Dockerfile.runtime.base
